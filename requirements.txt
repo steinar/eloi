@@ -1,0 +1,4 @@
+Flask==0.9
+SQLAlchemy==0.7.9
+ipython==0.13.1
+
