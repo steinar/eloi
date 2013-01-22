@@ -21,10 +21,12 @@ class Location(UtilityMixIn, db.Model):
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
 
+
 order_slots = db.Table('order_slots', db.Model.metadata,
     db.Column('order_id', db.Integer, db.ForeignKey('Order.id')),
     db.Column('slot_id', db.Integer, db.ForeignKey('Slot.id'))
 )
+
 
 class Slot(UtilityMixIn, db.Model):
     __tablename__ = 'Slot'
@@ -40,6 +42,7 @@ class Slot(UtilityMixIn, db.Model):
 
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
     location = db.relationship('Location', backref='locations', lazy='immediate', primaryjoin='Location.id==Slot.location_id')
+
 
 class Order(UtilityMixIn, db.Model):
     __tablename__ = 'Order'
