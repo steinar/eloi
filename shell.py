@@ -2,7 +2,7 @@ import sys
 
 from werkzeug import script
 
-from app import app
+from booking.app import app
 
 def make_shell():
     return dict(app=app,)
