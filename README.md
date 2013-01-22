@@ -29,33 +29,49 @@ Sjá núverandi síðu <http://fbjork.is/Forsida/Leigaasolum>
 Listi af sölum 6 stykki:
 
 - Dans- og veislusalur
-- Litla Björk
-- Afmælissalur
+- Litla Björk (LB)
+- Afmælissalur (AS)
 - Andrasalur
 - Mínervusalur
 - Bjarkarsalur
 
 Almenn lýsing á sölum
 
-### Salur
+## Model
 
-Model:
+Salur
+-----------
+    Titill 
+    Stutt lýsing
+    Mynd (kanski fleiri en ein)
+    Ítarleg lýsing
 
-- Titill
-- Stutt lýsing
-- Mynd (kanski fleiri en ein)
-- Ítarleg lýsing
+Pöntun
+-----------
+     Nafn
+     Tölvupóstur
+     Sími
+     Greitt
 
----
 
-### Kröfur
+### Almennar kröfur
 
-- Það þarf að vera hægt að setja upp á hvaða tímum salirnir eru lausir.
+## Almennur notandi
+- Getur séð yfirlit yfir alla sali
+- Getur skoðað sal nánar (fær nánari lýsingu og reglur)
+- Getur pantað sal (umsjónarmaður setur upp hvaða tímar eru lausir). Til að byrja með er aðeins hægt Litlu Björk (LB) og Afmælissal (AS). 
+- Getur sent fyrirspurn út af öðrum sölum en LB og AS
+- Fær upplýsingar um greiðslu og reglur sem gilda um sali við pöntun
+- 
+
+## Umsjónarmaður
+- Umsjónarmaður getu sett upp á hvaða tímum salirnir eru lausir.
 - Umsjónarmaður þarf að fá yfirlit yfir allar pantanir
 - Umsjónarmaður getur staðfest greiðslu og þá er ekki lengur hægt að panta.
--
+- Umsjónarmaður getur eytt út pöntun
+- Umsjónarmaður getur breytt lýsingu á sölum
 
-
-
-
-
+## Auka kröfur
+- Gera pantanir aðgengilegar í gegnum ical
+- Geta pantað aðra sali en Litla Björk og Veislusal
+- 
