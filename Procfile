@@ -1,1 +1,1 @@
-web: python app/app.py
+web: python booking/app.py
