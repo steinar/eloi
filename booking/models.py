@@ -14,10 +14,18 @@ class UtilityMixIn(object):
             db.session.rollback()
             raise RuntimeError(e)
 
+    def populate(self, **kwargs):
+        return map(lambda (k,v): setattr(self, k, v), kwargs.items())
+
 
 class Location(UtilityMixIn, db.Model):
+    def __init__(self, name='', slug='', type=0, description='', image_path=''):
+        self.populate(name=name, slug=slug, type=type, description=description, image_path=image_path)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
+    description = db.Column(db.UnicodeText)
+    image_path = db.Column(db.String(250))
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
 
@@ -30,6 +38,10 @@ order_slots = db.Table('order_slots', db.Model.metadata,
 
 class Slot(UtilityMixIn, db.Model):
     __tablename__ = 'Slot'
+
+    def __init__(self, weekday=None, time_start=None, time_end=None, valid_from=None, valid_to=None, location=None):
+        self.populate(weekday=weekday, time_start=time_start, valid_from=valid_from, valid_to=valid_to,
+            location=location)
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -47,6 +59,11 @@ class Slot(UtilityMixIn, db.Model):
 class Order(UtilityMixIn, db.Model):
     __tablename__ = 'Order'
 
+    def __init__(self, date_start=None, date_end=None, name='', email='', phone='', comment='', paid=False, slots=None):
+        self.populate(date_start=date_start, date_end=date_end, name=name, email=email, phone=phone, comment=comment,
+        paid=paid, slots=slots)
+        self.location = slots[0].location if slots else None
+
     id = db.Column(db.Integer, primary_key=True)
     date_start = db.Column(db.Date())
     date_end = db.Column(db.Date())
@@ -60,6 +77,7 @@ class Order(UtilityMixIn, db.Model):
 
     slots = db.relationship('Slot', secondary=order_slots, backref='orders')
 
+    # Note: Just for convenience. Set automatically based on slots.
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
     location = db.relationship('Location', backref='orders')
 
