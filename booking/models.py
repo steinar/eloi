@@ -41,7 +41,7 @@ class Slot(UtilityMixIn, db.Model):
     valid_to = db.Column(db.Date)
 
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
-    location = db.relationship('Location', backref='locations', lazy='immediate', primaryjoin='Location.id==Slot.location_id')
+    location = db.relationship('Location', backref='slots')
 
 
 class Order(UtilityMixIn, db.Model):
@@ -59,5 +59,8 @@ class Order(UtilityMixIn, db.Model):
     paid = db.Column(db.Boolean)
 
     slots = db.relationship('Slot', secondary=order_slots, backref='orders')
+
+    location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
+    location = db.relationship('Location', backref='orders')
 
 
