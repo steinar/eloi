@@ -37,10 +37,9 @@ def get_slots_week_as_dict(location, date_in_week):
     """
     Put slots of a week in 7 buckets, one for each day.
     """
-    pairs = map(lambda slot: (slot.weekday, slot), get_slots_week(location, date_in_week))
     weekday_dict = dict(zip(range(7), map(lambda i: [], range(7))))
-    for (weekday, slot) in pairs:
-        weekday_dict[weekday].append(slot)
+    for slot in get_slots_week(location, date_in_week):
+        weekday_dict[slot.weekday].append(slot)
     return weekday_dict
 
 
