@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="span12">
+        {% for location in locations %}
+            <div class="span3 location">
+                <h3>{{ location.title }}</h3>
+                <img src="{{ location.img }}" />
+                <div class="description">{{ location.description }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
