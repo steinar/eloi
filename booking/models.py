@@ -7,12 +7,18 @@ class UtilityMixIn(object):
         return cls.query.all()
 
     def save(self):
+        if not self.validate():
+            raise RuntimeError('Instance %s is invalid' % self)
+
         try:
             db.session.add(self)
             db.session.commit()
         except OperationalError, e:
             db.session.rollback()
             raise RuntimeError(e)
+
+    def validate(self):
+        return True
 
     def populate(self, **kwargs):
         return map(lambda (k,v): setattr(self, k, v), kwargs.items())
@@ -42,6 +48,16 @@ class Slot(UtilityMixIn, db.Model):
     def __init__(self, weekday=None, time_start=None, time_end=None, valid_from=None, valid_to=None, location=None):
         self.populate(weekday=weekday, time_start=time_start, valid_from=valid_from, valid_to=valid_to,
             location=location)
+
+    def validate(self):
+        """
+        Location.valid_from.weekday() and Location.valid_to.weekday() must be the same as Location.weekday, that is,
+        if the slot applies to a Tuesday both valid_to and valid_from must be Tuesdays.
+
+        This is done to simplify database requests.
+        """
+        return ((not self.valid_from or self.valid_from.weekday() == self.weekday) and
+               (not self.valid_to or self.valid_to.weekday() == self.weekday))
 
     id = db.Column(db.Integer, primary_key=True)
 

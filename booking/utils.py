@@ -30,13 +30,7 @@ def get_slots_week(location, date_in_week):
         .filter(Slot.valid_from <= last_day).filter(Slot.valid_to >= first_day)\
         .order_by('weekday', 'time_start').all()
 
-    # Filter out those who are not valid on the day which they apply.
-    # Perhaps someone can do this in the db query
-    week_dates = map(lambda weekday: first_day+timedelta(days=weekday), range(7))
-    pairs = map(lambda slot: (slot.weekday, slot), all_possible_slots)
-    valid_pairs = filter(lambda (weekday, slot): slot.valid_from <= week_dates[weekday] <= slot.valid_to, pairs)
-
-    return valid_pairs
+    return map(lambda slot: (slot.weekday, slot), all_possible_slots)
 
 
 def get_slots_week_as_dict(location, date_in_week):
