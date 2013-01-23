@@ -30,14 +30,14 @@ def get_slots_week(location, date_in_week):
         .filter(Slot.valid_from <= last_day).filter(Slot.valid_to >= first_day)\
         .order_by('weekday', 'time_start').all()
 
-    return map(lambda slot: (slot.weekday, slot), all_possible_slots)
+    return all_possible_slots
 
 
 def get_slots_week_as_dict(location, date_in_week):
     """
     Put slots of a week in 7 buckets, one for each day.
     """
-    pairs = get_slots_week(location, date_in_week)
+    pairs = map(lambda slot: (slot.weekday, slot), get_slots_week(location, date_in_week))
     weekday_dict = dict(zip(range(7), map(lambda i: [], range(7))))
     for (weekday, slot) in pairs:
         weekday_dict[weekday].append(slot)

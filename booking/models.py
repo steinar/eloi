@@ -56,17 +56,16 @@ class Slot(UtilityMixIn, db.Model):
 
         This is done to simplify database requests.
         """
-        return ((not self.valid_from or self.valid_from.weekday() == self.weekday) and
-               (not self.valid_to or self.valid_to.weekday() == self.weekday))
+        return self.valid_from.weekday() == self.weekday and self.valid_to.weekday() == self.weekday
 
     id = db.Column(db.Integer, primary_key=True)
 
-    weekday = db.Column(db.Integer)
-    time_start = db.Column(db.Time)
-    time_end = db.Column(db.Time)
+    weekday = db.Column(db.Integer) # Make required or default 0
+    time_start = db.Column(db.Time) # Make required
+    time_end = db.Column(db.Time) # Make required
 
-    valid_from = db.Column(db.Date)
-    valid_to = db.Column(db.Date)
+    valid_from = db.Column(db.Date) # Make required
+    valid_to = db.Column(db.Date) # Make required
 
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
     location = db.relationship('Location', backref='slots')
