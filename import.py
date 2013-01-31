@@ -1,12 +1,7 @@
-import os
 import sys
 import yaml
-from booking.app import app
 from booking.database import db
 from booking.models import MODELS, TABLES
-from booking.settings import SERVER_PORT
-from booking import views
-
 
 
 def import_item(model, item):
@@ -24,12 +19,12 @@ def import_file(filename):
     for (type_name, items) in data.items():
         try:
             instances.extend([
-                models[type_name](**item)
+                (models[type_name], item)
                 for item in items
                 if type_name in models
             ])
             table_entries.extend([
-                tables[type_name].insert().values(**item)
+                (tables[type_name], item)
                 for item in items
                 if type_name in tables
             ])
@@ -46,13 +41,24 @@ def import_file(filename):
 
         return
 
-    for item in instances:
-        print "Saving", item
+    for model,kwargs in instances:
+        print "Constructing", model
+        item, created = model.get_or_create(**kwargs)
+        print (created and "Creating" or "Updating"), item
         item.save(commit=False)
 
-    for item in table_entries:
-        print "Inserting into table", item.table.name
-        db.session.execute(item)
+    for table,kwargs in table_entries:
+        print "Checking", table.name
+        select = table.select()
+        for k,v in kwargs.items():
+            select = select.where(getattr(table.c, k) == v)
+
+        if not db.session.execute(select).first():
+            print "Inserting into", table.name
+            db.session.execute(table.insert().values(**kwargs))
+        else:
+            print "Found and skipping in", table.name
+
 
     db.session.commit()
 
