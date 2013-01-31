@@ -44,7 +44,7 @@ class Location(UtilityMixIn, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
-    description = db.Column(db.UnicodeText)
+    description = db.Column(db.Text)
     price = db.Column(db.Integer)
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
@@ -59,7 +59,7 @@ class LocationImage(UtilityMixIn, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
-    description = db.Column(db.UnicodeText)
+    description = db.Column(db.Text)
     image_path = db.Column(db.String(250))
 
     location_id = db.Column(db.Integer, db.ForeignKey('Location.id'))
@@ -133,7 +133,7 @@ class Order(UtilityMixIn, db.Model):
     name = db.Column(db.String(120))
     email = db.Column(db.String(120))
     phone = db.Column(db.String(120))
-    comment = db.Column(db.UnicodeText)
+    comment = db.Column(db.Text)
 
     paid = db.Column(db.Boolean)
 
