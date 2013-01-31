@@ -6,7 +6,7 @@ Location:
     image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
     slug: "lb"                                                                        # string
     type: 0                                                                           # int
-    id: 1
+  - id: 1
     name: "Afmælissalur"
     description: "Tilvalinn fyrir barnaafmæli og smærri uppákomur."
     price: 20000
@@ -43,14 +43,14 @@ Location:
     type: 0
 
 Slot:
-  - id: 0                 # int
-    weekday: 3            # int
-    time_start:           # db.time
-    time_end:             # db.time
+  - id: 0                                             # int
+    weekday: 3                                        # int
+    time_start:                                       # db.time
+    time_end:                                         # db.time
     valid_from: '2013-01-31T19:44:58.911227'          # db.date
     valid_to: '2013-01-31T19:44:58.911227'            # db.date
-    location_id: 0        # int
-    location:             # db.relationship
+    location_id: 0                                    # int
+    location:                                         # db.relationship
 
 Order:
   - id: 0                 # int
