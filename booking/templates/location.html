@@ -5,7 +5,7 @@
     <div class="span12">
         {% for location in locations %}
         <div class="span4 location-container">
-            <a class="location-link" href="#">
+            <a class="location-link" href="/location/{{ location.slug }}">
                 <div class="location">
                     <h3>{{ location.name }}</h3>
                     <img src="{{ location.image_path }}" />

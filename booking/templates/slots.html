@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="span2">
+        <ul class="nav nav-list affix-top">
+            <li>
+                <a href="/location/{{ location_slug }}/?weeks=33-36">June</a>
+            </li>
+            <li>
+                <a href="/location/{{ location_slug }}/?weeks=37-40">July</a>
+            </li>
+        </ul>
+    </div>
+    <div class="span10">
+        {{ weeks }}
+    </div>
+</div>
+
+{% endblock %}
