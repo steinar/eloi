@@ -1,4 +1,4 @@
-Locations:
+Location:
   - id: 0                                                                             # int
     name: "Litla Björk"                                                               # string
     description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
@@ -42,17 +42,17 @@ Locations:
     slug: ""
     type: 0
 
-Slots:
+Slot:
   - id: 0                 # int
-    weekday: 0            # int
+    weekday: 3            # int
     time_start:           # db.time
     time_end:             # db.time
-    valid_from:           # db.date
-    valid_to:             # db.date
+    valid_from: '2013-01-31T19:44:58.911227'          # db.date
+    valid_to: '2013-01-31T19:44:58.911227'            # db.date
     location_id: 0        # int
     location:             # db.relationship
 
-Orders:
+Order:
   - id: 0                 # int
     date_start:           # db.time
     date_end:             # db.time
@@ -61,6 +61,4 @@ Orders:
     phone:                # string
     comment:              # unicode text
     paid:                 # boolean
-    slots:                # db.relationship
-    location_id:          # int
-    location:             # db.relationship
+    slots: []               # db.relationship
