@@ -1,5 +1,15 @@
 from sqlalchemy.exc import OperationalError
+from booking.app import images
 from booking.database import db
+
+MODELS = []
+
+def model(cls):
+    if not hasattr(cls, '__tablename__'):
+        raise Exception('%s does not have __tablename__ defined.' % cls.__name__)
+    MODELS.append(cls)
+    return cls
+
 
 class UtilityMixIn(object):
     @classmethod
@@ -23,16 +33,17 @@ class UtilityMixIn(object):
     def populate(self, **kwargs):
         return map(lambda (k,v): setattr(self, k, v), kwargs.items())
 
-
+@model
 class Location(UtilityMixIn, db.Model):
-    def __init__(self, name='', slug='', type=0, description='', image_path=''):
+    __tablename__ = 'Location'
+
+    def __init__(self, name='', slug='', type=0, description=u'', image_path=''):
         self.populate(name=name, slug=slug, type=type, description=description, image_path=image_path)
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120))
+    title = db.Column(db.String(120))
     description = db.Column(db.UnicodeText)
     price = db.Column(db.Integer)
-    image_path = db.Column(db.String(250))
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
 
@@ -41,7 +52,28 @@ order_slots = db.Table('order_slots', db.Model.metadata,
     db.Column('slot_id', db.Integer, db.ForeignKey('Slot.id'))
 )
 
+@model
+class LocationImage(UtilityMixIn, db.Model):
+    __tablename__ = 'LocationImage'
 
+    def __init__(self, title='', description=u'', image_path='', location=None):
+        self.populate(title=title, description=description, image_path=image_path, location=location)
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120))
+    description = db.Column(db.UnicodeText)
+    image_path = db.Column(db.String(250))
+
+    location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
+    location = db.relationship('Location', backref='images')
+
+    @property
+    def image_url(self):
+        if not self.image_path:
+            return None
+        return images.url(self.image_path)
+
+@model
 class Slot(UtilityMixIn, db.Model):
     __tablename__ = 'Slot'
 
@@ -70,7 +102,7 @@ class Slot(UtilityMixIn, db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
     location = db.relationship('Location', backref='slots')
 
-
+@model
 class Order(UtilityMixIn, db.Model):
     __tablename__ = 'Order'
 
@@ -97,3 +129,6 @@ class Order(UtilityMixIn, db.Model):
     location = db.relationship('Location', backref='orders')
 
 
+# If any of the tables are missing, do db.create_all
+if any([not db.engine.dialect.has_table(db.engine.connect(), cls.__tablename__) for cls in MODELS]):
+    db.create_all()
