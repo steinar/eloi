@@ -23,6 +23,13 @@ class UtilityMixIn(object):
     def all(cls):
         return cls.query.all()
 
+    @classmethod
+    def get_or_create(cls, **kwargs):
+        instance = cls.query.filter_by(id=kwargs.get('id')).first()
+        if instance:
+            return instance.populate(**kwargs), False
+        return cls(**kwargs), True
+
     def save(self, commit=True):
         try:
             db.session.add(self)
@@ -32,7 +39,8 @@ class UtilityMixIn(object):
             raise RuntimeError(e)
 
     def populate(self, **kwargs):
-        return map(lambda (k,v): setattr(self, k, v), kwargs.items())
+        [setattr(self, k, v) for (k,v) in kwargs.items()]
+        return self
 
     def repr(self, *args):
         return "<%s: %s>" % (self.__class__.__name__, ", ".join(map(unicode, args)))
@@ -109,10 +117,10 @@ class Slot(UtilityMixIn, db.Model):
         This is done to simplify database requests.
         """
         if isinstance(value, basestring):
-            value = dateutil.parser.parse(value)
+            value = dateutil.parser.parse(value).date()
 
-        if value.weekday() == self.weekday:
-            raise ValueError('%s does not match with weekday (%s)' % (name, self.weekday))
+        if self.weekday and value.weekday() is not self.weekday:
+            raise ValueError('Field %s is %s which does not match with weekday (%s instead of %s)' % (name, value, value.weekday(), self.weekday))
 
         return value
 
