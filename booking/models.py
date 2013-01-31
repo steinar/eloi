@@ -31,10 +31,10 @@ class Location(UtilityMixIn, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
     description = db.Column(db.UnicodeText)
+    price = db.Column(db.Integer)
     image_path = db.Column(db.String(250))
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
-
 
 order_slots = db.Table('order_slots', db.Model.metadata,
     db.Column('order_id', db.Integer, db.ForeignKey('Order.id')),
