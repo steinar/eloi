@@ -4,16 +4,13 @@
 <div class="row">
     <div class="span2">
         <ul class="nav nav-list affix-top">
-            <li>
-                <a href="/location/{{ location_slug }}/?weeks=33-36">June</a>
-            </li>
-            <li>
-                <a href="/location/{{ location_slug }}/?weeks=37-40">July</a>
-            </li>
+            {% for link in month_links %}
+                <li>{{ link }}</li>
+            {% endfor %}
         </ul>
     </div>
     <div class="span10">
-        {{ weeks }}
+        {{ date_range }}
     </div>
 </div>
 
