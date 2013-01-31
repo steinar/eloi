@@ -42,8 +42,8 @@ Slot:
     time_start:                                       # db.time
     time_end:                                         # db.time
     price:  16000                                     # int
-    valid_from: '2013-01-31T19:44:58.911227'          # db.date
-    valid_to: '2013-01-31T19:44:58.911227'            # db.date
+    valid_from: '2013-01-31'          # db.date
+    valid_to: '2013-01-31'            # db.date
     location_id: 0                                    # int
     location:                                         # db.relationship
 
