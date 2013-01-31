@@ -2,51 +2,46 @@ Location:
   - id: 1                                                                             # int
     name: "Litla Björk"                                                               # string
     description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
-    price: 15000                                                                      # int
     image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
     slug: "lb"                                                                        # string
     type: 0                                                                           # int
   - id: 2
     name: "Afmælissalur"
     description: "Tilvalinn fyrir barnaafmæli og smærri uppákomur."
-    price: 20000
     image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
     slug: "as"
     type: 0
   - id: 3
     name: "Dans- og veislusalur"
     description: "108,1m2 salur með speglum. Leigist út fyrir veislur og annað. Tekur 70-80 manns í sæti."
-    price:  40000
     image_path: "http://fbjork.is/thumb.php?file=/files/138-0.jpg&size=200x150"
     slug: "dv"
     type: 0
   - id: 4
     name: "Andrasalur"
     description: "492,4m2 boltasalur."
-    price: 5000
     image_path: "http://fbjork.is/thumb.php?file=/files/137-0.jpg&size=200x150"
     slug: "andri"
     type: 0
   - id: 5
     name: "Mínervusalur"
     description: "142,1 m2 glæsilegur leikfimisalur með speglum."
-    price: 4500
     image_path: "http://fbjork.is/thumb.php?file=/files/136-0.jpg&size=200x150"
     slug: "ms"
     type: 0
   - id: 6
     name: "Bjarkarsalur"
     description: "1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum."
-    price: 15000
     image_path: "http://fbjork.is/thumb.php?file=/files/133-0.jpg&size=200x150"
     slug: ""
     type: 0
 
 Slot:
-  - id: 1                 # int
-    weekday: 3            # int
-    time_start:           # db.time
-    time_end:             # db.time
+  - id: 1                                             # int
+    weekday: 3                                        # int
+    time_start:                                       # db.time
+    time_end:                                         # db.time
+    price:  16000                                     # int
     valid_from: '2013-01-31'          # db.date
     valid_to: '2013-01-31'            # db.date
     location_id: 0                                    # int

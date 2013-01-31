@@ -110,6 +110,8 @@ class Slot(UtilityMixIn, db.Model):
     time_start = db.Column(db.Time) # Make required
     time_end = db.Column(db.Time) # Make required
 
+    price = db.Column(db.Integer)
+
     valid_from = db.Column(db.Date) # Make required
     valid_to = db.Column(db.Date) # Make required
 
