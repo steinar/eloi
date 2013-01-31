@@ -44,3 +44,6 @@ share/
 
 #PyCharm
 .idea/
+
+#Editor
+*.swp
