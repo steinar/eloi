@@ -1,11 +1,7 @@
-import os
 import sys
 import yaml
-from booking.app import app
-from booking.models import MODELS
-from booking.settings import SERVER_PORT
-from booking import views
-
+from booking.database import db
+from booking.models import MODELS, TABLES
 
 
 def import_item(model, item):
@@ -13,30 +9,58 @@ def import_item(model, item):
 
 def import_file(filename):
     models = dict(map(lambda x: (x.__tablename__, x), MODELS))
+    tables = dict(map(lambda x: (x.name, x), TABLES))
     data = yaml.load(open(filename, 'r'))
 
     instances = []
+    table_entries = []
     errors = []
 
-    for (model_name, items) in data.items():
+    for (type_name, items) in data.items():
         try:
-            instances.extend([models[model_name](**item) for item in items])
+            instances.extend([
+                (models[type_name], item)
+                for item in items
+                if type_name in models
+            ])
+            table_entries.extend([
+                (tables[type_name], item)
+                for item in items
+                if type_name in tables
+            ])
         except Exception, e:
-            errors.append((model_name, e, item))
+            errors.append((type_name, e, item))
 
     if errors:
         print "The following errors occurred:"
-        for (model_name, msg, item) in errors:
-            print model_name
+        for (type_name, msg, item) in errors:
+            print type_name
             print msg
             print item
             print
 
         return
 
-    for item in instances:
-        print "Saving", item
-        item.save()
+    for model,kwargs in instances:
+        print "Constructing", model
+        item, created = model.get_or_create(**kwargs)
+        print (created and "Creating" or "Updating"), item
+        item.save(commit=False)
+
+    for table,kwargs in table_entries:
+        print "Checking", table.name
+        select = table.select()
+        for k,v in kwargs.items():
+            select = select.where(getattr(table.c, k) == v)
+
+        if not db.session.execute(select).first():
+            print "Inserting into", table.name
+            db.session.execute(table.insert().values(**kwargs))
+        else:
+            print "Found and skipping in", table.name
+
+
+    db.session.commit()
 
     print "All done. =)"
 

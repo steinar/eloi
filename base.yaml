@@ -1,59 +1,89 @@
 Location:
-  - id: 0                                                                             # int
+  - id: 1                                                                             # int
     name: "Litla Björk"                                                               # string
     description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
-    price: 15000                                                                      # int
+    extended_info: >
+      Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði.
+      Verð samtals kr. 16,0 þús. fyrir báða salina.
     image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
     slug: "lb"                                                                        # string
     type: 0                                                                           # int
-    id: 1
+  - id: 2
     name: "Afmælissalur"
     description: "Tilvalinn fyrir barnaafmæli og smærri uppákomur."
-    price: 20000
+    extended_info: >
+      Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði.
+      Verð samtals kr. 16,0 þús. fyrir báða salina.
     image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
     slug: "as"
     type: 0
-  - id: 2
+  - id: 3
     name: "Dans- og veislusalur"
     description: "108,1m2 salur með speglum. Leigist út fyrir veislur og annað. Tekur 70-80 manns í sæti."
-    price:  40000
+    extended_info: >
+      Leiga fyrir 1/2 daginn kr. 40.000,-.
+      Leiga fyrir allan daginn kr. 60.000,- (fermingar og slíkt).
+      Ofan á leiguverð bætist verð fyrir umsjónarmann sem aðstoðar við veisluna (tímagjald).
+      ATH. Aðeins leigður til fólks 30 ára og eldri.
+      Íþróttamiðstöðin Björk er staðsett í miðju íbúðarhúsnæðishverfi og vegna þessa höfum við ekki tök á
+      því að leigja húsnæðið lengur en til kl. 23 á kvöldi og getum ekki heimilað lifandi/háværa tónlist.
+      Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
     image_path: "http://fbjork.is/thumb.php?file=/files/138-0.jpg&size=200x150"
     slug: "dv"
     type: 0
-  - id: 3
+  - id: 4
     name: "Andrasalur"
     description: "492,4m2 boltasalur."
-    price: 5000
+    extended_info: >
+      Leiga 5.000,- per klst.
+      ATH. ekki leigður fyrir barnaafmæli.
+      Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
     image_path: "http://fbjork.is/thumb.php?file=/files/137-0.jpg&size=200x150"
     slug: "andri"
     type: 0
-  - id: 4
+  - id: 5
     name: "Mínervusalur"
     description: "142,1 m2 glæsilegur leikfimisalur með speglum."
-    price: 4500
+    extended_info: >
+    Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
     image_path: "http://fbjork.is/thumb.php?file=/files/136-0.jpg&size=200x150"
     slug: "ms"
     type: 0
-  - id: 5
+  - id: 6
     name: "Bjarkarsalur"
     description: "1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum."
-    price: 15000
+    extended_info: >
+    1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum.
+    Þessi salur er eingöngu leigður til íþróttafélaga og ef þjálfari er með í salnum. 
+    Leiga kr. 15.000,- á klst.
+    Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
     image_path: "http://fbjork.is/thumb.php?file=/files/133-0.jpg&size=200x150"
     slug: ""
     type: 0
+  - id: 7
+    name: "Afmælistryllingur"
+    description: "Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði. Verð samtals kr. 16,0 þús. fyrir báða salina."
+    extended_info: >
+    Litla Björk er 250,2 m2 gryfjusalur með trampolín ofl. Þar geta krakkar leikið sér og farið í leiki í drauma leikaðstöðu. 
+    Inni í Afmælissalnum (AS) eru m.a. DVD-tæki og sjónvarp.  Þar er fín aðstaða til að spila borðspil og fara í rólegri leiki.  Borð og stólar frammi á gangi og fólk getur nálgast það þar.  Aðgangur er að eldhúsi.  Þar er hægt að fá lánaðar könnur og komast í vask en ekki er ætlast til að fólk matreiði þar inni.  Fólk þarf að koma með sínar eigin veitingar og borðbúnað og auðvitað ganga allir frá eftir sig.
+    image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
+    slug: ""
+    type: 0
+    
 
 Slot:
-  - id: 0                 # int
-    weekday: 3            # int
-    time_start:           # db.time
-    time_end:             # db.time
-    valid_from: '2013-01-31T19:44:58.911227'          # db.date
-    valid_to: '2013-01-31T19:44:58.911227'            # db.date
-    location_id: 0        # int
-    location:             # db.relationship
+  - id: 1                                             # int
+    weekday: 3                                        # int
+    time_start:                                       # db.time
+    time_end:                                         # db.time
+    price:  16000                                     # int
+    valid_from: '2013-01-31'          # db.date
+    valid_to: '2013-01-31'            # db.date
+    location_id: 0                                    # int
+    location:                                         # db.relationship
 
 Order:
-  - id: 0                 # int
+  - id: 1                 # int
     date_start:           # db.time
     date_end:             # db.time
     name:                 # string
@@ -62,3 +92,8 @@ Order:
     comment:              # unicode text
     paid:                 # boolean
     slots: []               # db.relationship
+
+order_slots:
+  - slot_id: 1
+    order_id: 1
+
