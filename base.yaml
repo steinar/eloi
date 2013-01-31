@@ -1,14 +1,11 @@
 Locations:
-  Location(lb):
-    id: 0                                                                             # int
-    name: "Litla Björk"                                                               # string
-    description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
-    image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
-    slug: "lb"                                                                        # string
-    type: ""                                                                          # integer
-
-  Location(as):
-      id: 1
+    - id: 0                                                                             # int
+      name: "Litla Björk"                                                               # string
+      description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
+      image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
+      slug: "lb"                                                                        # string
+      type: ""                                                                          # integer
+    - id: 1
       name: "Afmælissalur"
       description: "Tilvalinn fyrir barnaafmæli og smærri uppákomur."
       image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
@@ -16,8 +13,7 @@ Locations:
       type: ""
 
 Slots:
-  Slot:
-    id: 0                 # int
+  - id: 0                 # int
     weekday: 0            # int
     time_start:           # db.time
     time_end:             # db.time
@@ -27,8 +23,7 @@ Slots:
     location:             # db.relationship
 
 Orders:
-  Order:
-    id: 0                 # int
+  - id: 0                 # int
     date_start:           # db.time
     date_end:             # db.time
     name:                 # string
