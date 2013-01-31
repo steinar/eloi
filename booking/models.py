@@ -39,12 +39,13 @@ class UtilityMixIn(object):
 class Location(UtilityMixIn, db.Model):
     __tablename__ = 'Location'
 
-    def __init__(self, id=None, name='', slug='', type=0, description=u'', image_path='', price=0):
-        self.populate(id=id, name=name, slug=slug, type=type, description=description, image_path=image_path, price=price)
+    def __init__(self, id=None, name='', slug='', type=0, description=u'', extended_info=u'', image_path='', price=0):
+        self.populate(id=id, name=name, slug=slug, type=type, description=description, extended_info=extended_info, image_path=image_path, price=price)
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     description = db.Column(db.Text)
+    extended_info = db.Column(db.Text)
     price = db.Column(db.Integer)
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)

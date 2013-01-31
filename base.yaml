@@ -2,36 +2,55 @@ Location:
   - id: 1                                                                             # int
     name: "Litla Björk"                                                               # string
     description: "250,2 m2 gryfjusalur með trampolín ofl. Frábær fyrir barnaafmælið!" # unicode text
+    extended_info: >
+      Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði.
+      Verð samtals kr. 16,0 þús. fyrir báða salina.
     image_path: "http://fbjork.is/thumb.php?file=/files/135-0.jpg&size=200x150"       # string
     slug: "lb"                                                                        # string
     type: 0                                                                           # int
   - id: 2
     name: "Afmælissalur"
     description: "Tilvalinn fyrir barnaafmæli og smærri uppákomur."
+    extended_info: >
+      Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði.
+      Verð samtals kr. 16,0 þús. fyrir báða salina.
     image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
     slug: "as"
     type: 0
   - id: 3
     name: "Dans- og veislusalur"
     description: "108,1m2 salur með speglum. Leigist út fyrir veislur og annað. Tekur 70-80 manns í sæti."
+    extended_info: >
+      Leiga fyrir 1/2 daginn kr. 40.000,-.
+      Leiga fyrir allan daginn kr. 60.000,- (fermingar og slíkt).
+      Ofan á leiguverð bætist verð fyrir umsjónarmann sem aðstoðar við veisluna (tímagjald).
+
+      ATH. Aðeins leigður til fólks 30 ára og eldri.
+      Íþróttamiðstöðin Björk er staðsett í miðju íbúðarhúsnæðishverfi og vegna þessa höfum við ekki tök á
+      því að leigja húsnæðið lengur en til kl. 23 á kvöldi og getum ekki heimilað lifandi/háværa tónlist.
     image_path: "http://fbjork.is/thumb.php?file=/files/138-0.jpg&size=200x150"
     slug: "dv"
     type: 0
   - id: 4
     name: "Andrasalur"
     description: "492,4m2 boltasalur."
+    extended_info: >
+      Leiga 5.000,- per klst.
+      ATH. ekki leigður fyrir barnaafmæli.
     image_path: "http://fbjork.is/thumb.php?file=/files/137-0.jpg&size=200x150"
     slug: "andri"
     type: 0
   - id: 5
     name: "Mínervusalur"
     description: "142,1 m2 glæsilegur leikfimisalur með speglum."
+    extended_info:
     image_path: "http://fbjork.is/thumb.php?file=/files/136-0.jpg&size=200x150"
     slug: "ms"
     type: 0
   - id: 6
     name: "Bjarkarsalur"
     description: "1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum."
+    extended_info:
     image_path: "http://fbjork.is/thumb.php?file=/files/133-0.jpg&size=200x150"
     slug: ""
     type: 0
