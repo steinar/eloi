@@ -83,8 +83,8 @@ table(order_slots)
 class Slot(UtilityMixIn, db.Model):
     __tablename__ = 'Slot'
 
-    def __init__(self, id=None, weekday=None, time_start=None, time_end=None, valid_from=None, valid_to=None, location=None, location_id=None):
-        self.populate(id=id, weekday=weekday, time_start=time_start, valid_from=valid_from, valid_to=valid_to,
+    def __init__(self, id=None, weekday=None, time_start=None, time_end=None, price=None, valid_from=None, valid_to=None, location=None, location_id=None):
+        self.populate(id=id, weekday=weekday, time_start=time_start, price=price, valid_from=valid_from, valid_to=valid_to,
             location=location, location_id=location_id)
 
     @validates('valid_from', 'valid_to')
