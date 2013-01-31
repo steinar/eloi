@@ -34,6 +34,9 @@ class UtilityMixIn(object):
     def populate(self, **kwargs):
         return map(lambda (k,v): setattr(self, k, v), kwargs.items())
 
+    def repr(self, *args):
+        return "<%s: %s>" % (self.__class__.__name__, ", ".join(map(unicode, args)))
+
 
 @model
 class Location(UtilityMixIn, db.Model):
@@ -49,6 +52,11 @@ class Location(UtilityMixIn, db.Model):
     price = db.Column(db.Integer)
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
+
+    def __repr__(self):
+        return self.repr(self.id, self.title)
+
+
 
 
 @model
@@ -71,6 +79,9 @@ class LocationImage(UtilityMixIn, db.Model):
         if not self.image_path:
             return None
         return images.url(self.image_path)
+
+    def __repr__(self):
+        return self.repr(self.id, self.title)
 
 
 order_slots = db.Table('order_slots', db.Model.metadata,
@@ -119,6 +130,9 @@ class Slot(UtilityMixIn, db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('Location.id'))
     location = db.relationship('Location', backref='slots')
 
+    def __repr__(self):
+        return self.repr(self.id, self.weekday, self.time_start, self.time_end)
+
 
 @model
 class Order(UtilityMixIn, db.Model):
@@ -145,6 +159,9 @@ class Order(UtilityMixIn, db.Model):
     # Note: Just for convenience. Set automatically based on slots.
     location_id = db.Column(db.Integer, db.ForeignKey('Location.id'))
     location = db.relationship('Location', backref='orders')
+
+    def __repr__(self):
+        return self.repr(self.id, self.slots)
 
 
 # If any of the tables are missing, do db.create_all
