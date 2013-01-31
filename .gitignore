@@ -41,3 +41,6 @@ nosetests.xml
 include/
 local/
 share/
+
+#PyCharm
+.idea/
