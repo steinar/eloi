@@ -1,0 +1,28 @@
+.location-container {
+    height: 284px;
+    text-align: center;
+    padding: 15px;
+}
+
+.location-container:nth-child(3n+1) {
+    margin-left: 0px;
+}
+
+.location {
+    padding: 10px;
+}
+
+.location > .description {
+    padding-top: 8px;
+}
+
+a.location-link {
+    color: #666;
+    text-decoration: none;
+}
+
+a.location-link:hover > .location {
+    box-shadow: 0 0 8px 2px #BDBDBD;
+    color: #000000;
+}
+
