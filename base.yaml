@@ -42,8 +42,6 @@ Locations:
     slug: ""
     type: 0
 
-
-
 Slots:
   - id: 0                 # int
     weekday: 0            # int
