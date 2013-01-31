@@ -35,6 +35,8 @@ class UtilityMixIn(object):
 
 @model
 class Location(UtilityMixIn, db.Model):
+    __tablename__ = 'Location'
+
     def __init__(self, name='', slug='', type=0, description=u'', image_path=''):
         self.populate(name=name, slug=slug, type=type, description=description, image_path=image_path)
 
