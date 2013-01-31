@@ -78,8 +78,7 @@ class Slot(UtilityMixIn, db.Model):
         self.populate(id=id, weekday=weekday, time_start=time_start, valid_from=valid_from, valid_to=valid_to,
             location=location, location_id=location_id)
 
-    @validates('valid_to')
-    @validates('valid_from')
+    @validates('valid_from', 'valid_to')
     def validate(self, name, value):
         """
         Location.valid_from.weekday() and Location.valid_to.weekday() must be the same as Location.weekday, that is,
