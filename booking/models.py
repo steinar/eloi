@@ -5,11 +5,16 @@ from booking.app import images
 from booking.database import db
 
 MODELS = []
+TABLES = []
 
 def model(cls):
     if not hasattr(cls, '__tablename__'):
         raise Exception('%s does not have __tablename__ defined.' % cls.__name__)
     MODELS.append(cls)
+    return cls
+
+def table(cls):
+    TABLES.append(cls)
     return cls
 
 
@@ -18,16 +23,17 @@ class UtilityMixIn(object):
     def all(cls):
         return cls.query.all()
 
-    def save(self):
+    def save(self, commit=True):
         try:
             db.session.add(self)
-            db.session.commit()
+            if commit: db.session.commit()
         except OperationalError, e:
             db.session.rollback()
             raise RuntimeError(e)
 
     def populate(self, **kwargs):
         return map(lambda (k,v): setattr(self, k, v), kwargs.items())
+
 
 @model
 class Location(UtilityMixIn, db.Model):
@@ -42,10 +48,6 @@ class Location(UtilityMixIn, db.Model):
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
 
-order_slots = db.Table('order_slots', db.Model.metadata,
-    db.Column('order_id', db.Integer, db.ForeignKey('Order.id')),
-    db.Column('slot_id', db.Integer, db.ForeignKey('Slot.id'))
-)
 
 @model
 class LocationImage(UtilityMixIn, db.Model):
@@ -67,6 +69,14 @@ class LocationImage(UtilityMixIn, db.Model):
         if not self.image_path:
             return None
         return images.url(self.image_path)
+
+
+order_slots = db.Table('order_slots', db.Model.metadata,
+    db.Column('order_id', db.Integer, db.ForeignKey('Order.id')),
+    db.Column('slot_id', db.Integer, db.ForeignKey('Slot.id'))
+)
+
+table(order_slots)
 
 
 @model
@@ -106,6 +116,7 @@ class Slot(UtilityMixIn, db.Model):
 
     location_id = db.Column(db.Integer, db.ForeignKey('Location.id'))
     location = db.relationship('Location', backref='slots')
+
 
 @model
 class Order(UtilityMixIn, db.Model):

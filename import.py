@@ -2,7 +2,8 @@ import os
 import sys
 import yaml
 from booking.app import app
-from booking.models import MODELS
+from booking.database import db
+from booking.models import MODELS, TABLES
 from booking.settings import SERVER_PORT
 from booking import views
 
@@ -13,21 +14,32 @@ def import_item(model, item):
 
 def import_file(filename):
     models = dict(map(lambda x: (x.__tablename__, x), MODELS))
+    tables = dict(map(lambda x: (x.name, x), TABLES))
     data = yaml.load(open(filename, 'r'))
 
     instances = []
+    table_entries = []
     errors = []
 
-    for (model_name, items) in data.items():
+    for (type_name, items) in data.items():
         try:
-            instances.extend([models[model_name](**item) for item in items])
+            instances.extend([
+                models[type_name](**item)
+                for item in items
+                if type_name in models
+            ])
+            table_entries.extend([
+                tables[type_name].insert().values(**item)
+                for item in items
+                if type_name in tables
+            ])
         except Exception, e:
-            errors.append((model_name, e, item))
+            errors.append((type_name, e, item))
 
     if errors:
         print "The following errors occurred:"
-        for (model_name, msg, item) in errors:
-            print model_name
+        for (type_name, msg, item) in errors:
+            print type_name
             print msg
             print item
             print
@@ -36,7 +48,13 @@ def import_file(filename):
 
     for item in instances:
         print "Saving", item
-        item.save()
+        item.save(commit=False)
+
+    for item in table_entries:
+        print "Inserting into table", item.table.name
+        db.session.execute(item)
+
+    db.session.commit()
 
     print "All done. =)"
 
