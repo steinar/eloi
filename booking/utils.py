@@ -1,5 +1,7 @@
 from datetime import date, timedelta
-from booking.models import Location, Slot
+from werkzeug.datastructures import FileStorage
+from booking.app import images
+from booking.models import Location, Slot, LocationImage
 
 def get_locations():
     return Location.all()
@@ -43,7 +45,13 @@ def get_slots_week_as_dict(location, date_in_week):
     return weekday_dict
 
 
-
+def create_location_image(location, image_storage, title='', description=''):
+    """
+    Returns a LocationImage instance. Note that it has not been saved.
+    image_storage is typically request.files['image']
+    """
+    saved_path = images.save(image_storage)
+    return LocationImage(title, description, saved_path, location)
 
 
 

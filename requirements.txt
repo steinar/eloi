@@ -8,4 +8,5 @@ argparse==1.2.1
 distribute==0.6.27
 ipython==0.13.1
 wsgiref==0.1.2
+Flask-Uploads==0.1.3
 
