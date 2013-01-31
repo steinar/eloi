@@ -39,7 +39,6 @@ class Location(UtilityMixIn, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     description = db.Column(db.UnicodeText)
-    price = db.Column(db.Integer)
     slug = db.Column(db.String(120))
     type = db.Column(db.Integer)
 
@@ -99,6 +98,8 @@ class Slot(UtilityMixIn, db.Model):
     weekday = db.Column(db.Integer) # Make required or default 0
     time_start = db.Column(db.Time) # Make required
     time_end = db.Column(db.Time) # Make required
+
+    price = db.Column(db.Integer)
 
     valid_from = db.Column(db.Date) # Make required
     valid_to = db.Column(db.Date) # Make required
