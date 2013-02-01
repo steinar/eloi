@@ -53,10 +53,10 @@ Location:
     name: "Bjarkarsalur"
     description: "1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum."
     extended_info: >
-    1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum.
-    Þessi salur er eingöngu leigður til íþróttafélaga og ef þjálfari er með í salnum. 
-    Leiga kr. 15.000,- á klst.
-    Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
+      1140 m2 fimleikasalur, fullbúinn nýjustu fimleikaáhöldum.
+      Þessi salur er eingöngu leigður til íþróttafélaga og ef þjálfari er með í salnum. 
+      Leiga kr. 15.000,- á klst.
+      Frekari upplýsingar fást með því að senda fyrirspurn á tölvupóstfang: leiga@fbjork.is í eða hringja í síma 565 2311 á opnunartíma skrifstofu (virka daga milli kl. 14.00-16.00).
     image_path: "http://fbjork.is/thumb.php?file=/files/133-0.jpg&size=200x150"
     slug: ""
     type: 0
@@ -64,8 +64,8 @@ Location:
     name: "Afmælistryllingur"
     description: "Leigjum út Litlu Björk (LB) og Afmælissalinn (AS) saman fyrir barnaafmæli eða aðra viðburði. Verð samtals kr. 16,0 þús. fyrir báða salina."
     extended_info: >
-    Litla Björk er 250,2 m2 gryfjusalur með trampolín ofl. Þar geta krakkar leikið sér og farið í leiki í drauma leikaðstöðu. 
-    Inni í Afmælissalnum (AS) eru m.a. DVD-tæki og sjónvarp.  Þar er fín aðstaða til að spila borðspil og fara í rólegri leiki.  Borð og stólar frammi á gangi og fólk getur nálgast það þar.  Aðgangur er að eldhúsi.  Þar er hægt að fá lánaðar könnur og komast í vask en ekki er ætlast til að fólk matreiði þar inni.  Fólk þarf að koma með sínar eigin veitingar og borðbúnað og auðvitað ganga allir frá eftir sig.
+      Litla Björk er 250,2 m2 gryfjusalur með trampolín ofl. Þar geta krakkar leikið sér og farið í leiki í drauma leikaðstöðu. 
+      Inni í Afmælissalnum (AS) eru m.a. DVD-tæki og sjónvarp.  Þar er fín aðstaða til að spila borðspil og fara í rólegri leiki.  Borð og stólar frammi á gangi og fólk getur nálgast það þar.  Aðgangur er að eldhúsi.  Þar er hægt að fá lánaðar könnur og komast í vask en ekki er ætlast til að fólk matreiði þar inni.  Fólk þarf að koma með sínar eigin veitingar og borðbúnað og auðvitað ganga allir frá eftir sig.
     image_path: "http://fbjork.is/thumb.php?file=/files/134-0.jpg&size=200x150"
     slug: ""
     type: 0

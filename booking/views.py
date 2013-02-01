@@ -15,8 +15,11 @@ def locations():
 
 @app.route('/location/<location_slug>/')
 def location(location_slug):
-    date_range = [request.args.get('date_from', ''),
-                  request.args.get('date_to', '')]
+    date_range = request.args.get('date_range', [])
+
+    if date_range:
+        pass
+
     ctx = {'location_slug': location_slug,
            'date_range': date_range,
            'month_links': [get_month_link(location_slug, i) for i in range(12)]}

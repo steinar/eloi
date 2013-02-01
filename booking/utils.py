@@ -1,14 +1,15 @@
 import calendar
 from datetime import date, timedelta
 from flask import Markup
-from werkzeug.datastructures import FileStorage
 from urllib import urlencode
 
 from booking.app import images
 from booking.models import Location, Slot, LocationImage
 
+
 def get_locations():
     return Location.all()
+
 
 def get_slots(location, for_date):
     """
@@ -21,6 +22,7 @@ def get_slots(location, for_date):
         .filter(Slot.valid_from <= for_date).filter(Slot.valid_to >= for_date)\
         .order_by('time_start').all()
 
+
 def get_slots_week(location, date_in_week):
     """
     Return all valid slots for a week. The date may be any day of the week (e.g. datetime.now())
@@ -28,8 +30,8 @@ def get_slots_week(location, date_in_week):
     assert isinstance(location, Location)
     assert isinstance(date_in_week, date)
 
-    first_day = date_in_week-timedelta(days=date_in_week.weekday())
-    last_day = first_day+timedelta(days=6)
+    first_day = date_in_week - timedelta(days=date_in_week.weekday())
+    last_day = first_day + timedelta(days=6)
 
     # Single query which returns all slots which are valid at some point during the week in question
     all_possible_slots = Slot.query.filter_by(location=location)\
@@ -69,12 +71,6 @@ def get_month_link(location, months_range):
     weekday, days = calendar.monthrange(year, month)
     first_day = date(year, month, 1)
     last_day = date(year, month, days)
-    params = urlencode({'date_from': first_day.isoformat(),
-                        'date_to': last_day.isoformat()})
+    params = urlencode({'date_range': [first_day.isoformat(), last_day.isoformat()]})
     href = '/location/%s/?%s' % (location, params)
     return Markup('<a href="%s">%s</a>' % (href, first_day.strftime('%B %Y')))
-
-
-
-
-

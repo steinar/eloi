@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 from booking.app import app
 from booking.settings import SERVER_PORT
