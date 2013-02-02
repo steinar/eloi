@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row-fluid">
-    <div class="span12">
-        {% for location in locations %}
-        <div class="span4 location-container">
+    {% for location in locations %}
+        <div class="columns four location-container{%if loop.last %} end{% endif %}">
             <a class="location-link" href="/location/{{ location.slug }}">
                 <div class="location">
                     <h3>{{ location.name }}</h3>
@@ -13,7 +11,5 @@
                 </div>
             </a>
         </div>
-        {% endfor %}
-    </div>
-</div>
+    {% endfor %}
 {% endblock %}
