@@ -1,6 +1,5 @@
 import calendar
 from datetime import date, timedelta
-from flask import Markup
 from urllib import urlencode
 
 from booking.app import images
@@ -60,7 +59,7 @@ def create_location_image(location, image_storage, title='', description=''):
     return LocationImage(title, description, saved_path, location)
 
 
-def get_month_link(location, months_range):
+def get_month_link(location, months_range, current_date_range):
     today = date.today()
     year = today.year + (today.month + months_range) / 12
     month = (today.month + months_range) % 12
@@ -71,6 +70,11 @@ def get_month_link(location, months_range):
     weekday, days = calendar.monthrange(year, month)
     first_day = date(year, month, 1)
     last_day = date(year, month, days)
-    params = urlencode({'date_range': [first_day.isoformat(), last_day.isoformat()]})
-    href = '/location/%s/?%s' % (location, params)
-    return Markup('<a href="%s">%s</a>' % (href, first_day.strftime('%B %Y')))
+    date_range = '%s:%s' % (first_day.isoformat(), last_day.isoformat())
+    url_params = urlencode({'date_range': date_range})
+    link = {
+        'href': '/location/%s/?%s' % (location, url_params),
+        'title': first_day.strftime('%B %Y'),
+        'active': date_range == current_date_range
+    }
+    return link

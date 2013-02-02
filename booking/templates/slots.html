@@ -5,12 +5,13 @@
     <div class="span2">
         <ul class="nav nav-list affix-top">
             {% for link in month_links %}
-                <li>{{ link }}</li>
+            <li{% if link.active %} class="active"{% endif %}>
+                <a href="{{ link.href }}">{{ link.title }}</a>
+            </li>
             {% endfor %}
         </ul>
     </div>
     <div class="span10">
-        {{ date_range }}
     </div>
 </div>
 
