@@ -12,6 +12,9 @@
         </ul>
     </div>
     <div class="columns ten">
+        {% for week in weeks %}
+            {% include 'week.html' %}
+        {% endfor %}
     </div>
 </div>
 

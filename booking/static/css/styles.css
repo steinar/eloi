@@ -4,10 +4,6 @@
     padding: 15px;
 }
 
-.location-container:nth-child(3n+1) {
-    margin-left: 0px;
-}
-
 .location {
     padding: 10px;
 }
@@ -17,12 +13,11 @@
 }
 
 a.location-link {
-    color: #666;
+    color: #333;
     text-decoration: none;
 }
 
 a.location-link:hover > .location {
     box-shadow: 0 0 8px 2px #BDBDBD;
-    color: #000000;
 }
 

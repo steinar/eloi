@@ -1,0 +1,12 @@
+<ul class="block-grid seven-up week">
+{% for day in week %}
+    <li>
+        <h6>{{ day.title }}</h6>
+        {% for slot in day.slots %}
+            <div{% if slot.class %} class="{{ slot.class }}"{% endif %}>
+                <a href="{{ slot.href }}">{{ slot.time }}</a>
+            </div>
+        {% endfor %}
+    </li>
+{% endfor %}
+</ul>
