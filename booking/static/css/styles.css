@@ -21,3 +21,39 @@ a.location-link:hover > .location {
     box-shadow: 0 0 8px 2px #BDBDBD;
 }
 
+/* Slots */
+ul.week.block-grid.seven-up {
+    margin-bottom: 30px;
+    border-top: solid 1px #BDBDBD;
+}
+
+ul.week > li {
+    min-width: 100px;
+}
+
+ul.week > li > * {
+    text-align: center;
+}
+
+ul.week > li > div {
+    height: 40px;
+    border-radius: 3px;
+    margin-bottom:2px;
+}
+
+ul.week > li > div > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.booked {
+    background-color: #BD362F;
+    border: solid 1px #A00000;
+}
+
+.available {
+    background-color: #51A351;
+    border: solid 1px #00A000;
+}
+
