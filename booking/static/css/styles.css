@@ -23,7 +23,7 @@ a.location-link:hover > .location {
 
 /* Slots */
 ul.week.block-grid.seven-up {
-    margin-bottom: 30px;
+    margin-bottom: 70px;
     border-top: solid 1px #BDBDBD;
 }
 
@@ -45,6 +45,13 @@ ul.week > li > div > a {
     display: block;
     width: 100%;
     height: 100%;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+ul.week > li > div > a:hover {
+    text-decoration: none;
 }
 
 .booked {
