@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!bin/python
+
 import sys
 
 from werkzeug import script

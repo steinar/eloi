@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!bin/python
 
 import os
 from booking.app import app
