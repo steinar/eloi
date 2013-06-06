@@ -24,7 +24,6 @@ a.location-link:hover > .location {
 /* Slots */
 ul.week.block-grid.seven-up {
     margin-bottom: 70px;
-    border-top: solid 1px #BDBDBD;
 }
 
 ul.week > li {
@@ -36,18 +35,28 @@ ul.week > li > * {
 }
 
 ul.week > li > div {
-    height: 40px;
-    border-radius: 3px;
+    min-height: 40px;
+    border-radius: 2px;
     margin-bottom:2px;
+    border: solid 1px #AAA;
+}
+
+ul.week > li {
+    border-top: solid 1px #BDBDBD;
 }
 
 ul.week > li > div > a {
     display: block;
     width: 100%;
     height: 100%;
-    color: #FFFFFF;
+    color: #000000;
     font-weight: bold;
     padding: 10px 0;
+}
+
+ul.week > li > div > a:hover {
+    box-shadow: 0 0  4px 2px #AAA;
+    transition: 0.3s;
 }
 
 ul.week > li > div > a:hover {
@@ -55,12 +64,33 @@ ul.week > li > div > a:hover {
 }
 
 .booked {
-    background-color: #BD362F;
-    border: solid 1px #A00000;
+    background-color: #DDD;
 }
 
 .available {
-    background-color: #51A351;
-    border: solid 1px #00A000;
+    background-color: #FFF;
 }
 
+/* Bootstrap overrides */
+body .nav-list {
+    margin-top: 14px;
+}
+
+body .nav-list > li > a {
+    background-color: #FFFFFF;
+    color: #666;
+    font-size: 12pt;
+}
+body .nav-list > li > a:hover {
+    background-color: #FFF;
+    color: #000;
+    transition: 0.5s;
+}
+
+body .nav-list > li.active > a,
+body .nav-list > li.active > a:hover {
+    background-color: #FFF;
+    color: #000;
+    font-weight: bold;
+    text-shadow: none;
+}
